@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 60" width="360" height="48">
+  <!-- softonix -->
+  <text y="40" font-family="Montserrat, Verdana, sans-serif" font-size="38" font-weight="700" letter-spacing="-0.5">
+    <tspan fill="#ffffff">soft</tspan><tspan fill="#FF4713">onix</tspan>
+  </text>
+  <!-- ® -->
+  <text x="248" y="24" font-family="Montserrat, Verdana, sans-serif" font-size="13" font-weight="400" fill="#ffffff">®</text>
+  <!-- / -->
+  <text x="268" y="40" font-family="Montserrat, Verdana, sans-serif" font-size="38" font-weight="300" fill="#FF4713"> /</text>
+  <!-- beyond expectations -->
+  <text x="308" y="31" font-family="Montserrat, Verdana, sans-serif" font-size="11" font-weight="400" fill="#ffffff" letter-spacing="0.3">beyond</text>
+  <text x="308" y="44" font-family="Montserrat, Verdana, sans-serif" font-size="11" font-weight="400" fill="#ffffff" letter-spacing="0.3">expectations</text>
+</svg>
