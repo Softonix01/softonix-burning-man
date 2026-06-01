@@ -1,3 +1,83 @@
+// ===== AUTH CONFIG — fill in your values =====
+const SUPABASE_URL = 'https://wmohjzwzpekyxypbkbld.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_kcWb_3EavCxLf_i1MpTGxA_VVcu5ZiX';
+// ===== SUPABASE INIT =====
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// ===== AUTH =====
+async function checkAuth() {
+  const { data: { session } } = await supabaseClient.auth.getSession();
+  if (session) {
+    showApp(session.user);
+  } else {
+    showLogin();
+  }
+}
+
+function showApp(user) {
+  const overlay = document.getElementById('loginOverlay');
+  overlay.classList.add('hidden');
+  setTimeout(() => { overlay.style.display = 'none'; }, 500);
+
+  const navUser = document.getElementById('navUser');
+  navUser.classList.add('visible');
+
+  const avatar = user.user_metadata?.avatar_url;
+  const name = user.user_metadata?.full_name || user.user_metadata?.name || '';
+  if (avatar) document.getElementById('navAvatar').src = avatar;
+  if (name) document.getElementById('navName').textContent = name;
+}
+
+function showLogin() {
+  const overlay = document.getElementById('loginOverlay');
+  overlay.style.display = 'flex';
+  overlay.classList.remove('hidden');
+  document.getElementById('navUser').classList.remove('visible');
+  renderGoogleButton();
+}
+
+const GOOGLE_CLIENT_ID = '683725996658-q73u4p19v91b63lck2osfoq5hlvf872a.apps.googleusercontent.com';
+let googleButtonRendered = false;
+function renderGoogleButton() {
+  if (googleButtonRendered || typeof google === 'undefined') return;
+  google.accounts.id.initialize({
+    client_id: GOOGLE_CLIENT_ID,
+    callback: handleGoogleCredential,
+  });
+  google.accounts.id.renderButton(document.getElementById('google-signin-btn'), {
+    theme: 'filled_black',
+    size: 'large',
+    width: 280,
+    text: 'signin_with',
+    shape: 'rectangular',
+    logo_alignment: 'left',
+  });
+  googleButtonRendered = true;
+}
+
+async function handleGoogleCredential(response) {
+  const errorEl = document.getElementById('loginError');
+  errorEl.textContent = '';
+  const { data, error } = await supabaseClient.auth.signInWithIdToken({
+    provider: 'google',
+    token: response.credential,
+  });
+  if (error) {
+    errorEl.textContent = 'Помилка входу. Спробуйте ще раз.';
+    console.error('Auth error:', error);
+    return;
+  }
+  showApp(data.user);
+}
+
+async function signOut() {
+  await supabaseClient.auth.signOut();
+  if (typeof google !== 'undefined') google.accounts.id.disableAutoSelect();
+  showLogin();
+}
+
+checkAuth();
+
 // ===== PARTICLES =====
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
@@ -84,25 +164,6 @@ function updateCountdown() {
 }
 updateCountdown();
 setInterval(updateCountdown, 1000);
-
-// ===== EMAIL FORM =====
-document.getElementById('emailForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const name = this.name.value.trim();
-  const email = this.email.value.trim();
-
-  // In production: replace with your Formspree/Mailchimp endpoint
-  console.log('Registered:', { name, email });
-
-  this.style.display = 'none';
-  const success = document.getElementById('emailSuccess');
-  success.style.display = 'block';
-
-  // Store locally as demo
-  const existing = JSON.parse(localStorage.getItem('bm_registrations') || '[]');
-  existing.push({ name, email, date: new Date().toISOString() });
-  localStorage.setItem('bm_registrations', JSON.stringify(existing));
-});
 
 // ===== GALLERY / UPLOAD =====
 const uploadZone = document.getElementById('uploadZone');

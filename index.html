@@ -12,6 +12,19 @@
 </head>
 <body>
 
+  <!-- LOGIN OVERLAY -->
+  <div id="loginOverlay" class="login-overlay">
+    <div class="login-box">
+      <img src="assets/logo_softonix_white.png" alt="Softonix" height="28" class="login-logo" />
+      <p class="login-edition glitch" data-text="SOFTONIX EDITION">SOFTONIX EDITION</p>
+      <h1 class="login-title">BURNING<br/><span class="accent">MAN</span></h1>
+      <p class="login-hint">Увійдіть, щоб продовжити</p>
+      <div id="google-signin-btn" class="google-btn-wrap"></div>
+      <p class="login-work-note">Тільки корпоративна пошта @softonix.org</p>
+      <p id="loginError" class="login-error"></p>
+    </div>
+  </div>
+
   <!-- Particles background -->
   <canvas id="particles"></canvas>
 
@@ -20,11 +33,15 @@
     <a href="#home" class="nav__logo"><img src="assets/logo_softonix_white.png" alt="Softonix" height="20" /></a>
     <ul class="nav__links">
       <li><a href="#about">Про подію</a></li>
-      <li><a href="#register">Реєстрація</a></li>
       <li><a href="#gallery">Галерея</a></li>
       <li><a href="#puzzle">Гра</a></li>
       <li><a href="#donate">Донат</a></li>
     </ul>
+    <div class="nav__user" id="navUser">
+      <img id="navAvatar" class="nav__avatar" src="" alt="" />
+      <span id="navName" class="nav__name"></span>
+      <button class="nav__signout" onclick="signOut()">Вийти</button>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -63,7 +80,7 @@
       </div>
       <p class="countdown__note">* Точна дата буде оголошена незабаром</p>
 
-      <a href="#register" class="btn btn--primary">Залишити email</a>
+      <a href="#about" class="btn btn--primary">Дізнатись більше</a>
     </div>
 
     <div class="hero__fire">
@@ -108,26 +125,6 @@
             Відкрити на картах →
           </a>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- REGISTER / EMAIL -->
-  <section class="section register" id="register">
-    <div class="container">
-      <span class="section__tag">Реєстрація</span>
-      <h2 class="section__title">Будь першим,<br/>хто <span class="accent">дізнається</span></h2>
-      <p class="section__desc">Залиш email — ми повідомимо про дату, деталі та як потрапити на фестиваль</p>
-      <form class="email-form" id="emailForm">
-        <div class="email-form__row">
-          <input type="text" name="name" placeholder="Твоє ім'я" required />
-          <input type="email" name="email" placeholder="твій@email.com" required />
-          <button type="submit" class="btn btn--primary">Я їду!</button>
-        </div>
-        <p class="email-form__note">Без спаму. Тільки важлива інформація про подію.</p>
-      </form>
-      <div class="email-success" id="emailSuccess">
-        <span class="accent">✓</span> Чудово! Ти в списку. Слідкуй за повідомленнями.
       </div>
     </div>
   </section>
@@ -238,7 +235,6 @@
         </div>
         <div class="footer__links">
           <a href="#about">Про подію</a>
-          <a href="#register">Реєстрація</a>
           <a href="#gallery">Галерея</a>
           <a href="#puzzle">Гра</a>
           <a href="#donate">Донат</a>
@@ -251,6 +247,8 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://accounts.google.com/gsi/client"></script>
   <script src="script.js"></script>
 </body>
 </html>

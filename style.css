@@ -912,6 +912,133 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 1px;
 }
 
+/* ===== LOGIN OVERLAY ===== */
+.login-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease;
+}
+
+.login-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.login-box {
+  text-align: center;
+  padding: 48px 40px;
+  background: var(--dark);
+  border: 1px solid rgba(255,71,19,0.35);
+  border-radius: 16px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 0 80px rgba(255,71,19,0.15);
+  position: relative;
+  z-index: 2;
+}
+
+.login-logo { margin-bottom: 28px; }
+
+.login-edition {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  color: var(--orange);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.login-title {
+  font-size: clamp(36px, 13vw, 64px);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+.login-hint {
+  font-size: 12px;
+  color: var(--gray);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.google-btn-wrap {
+  display: flex;
+  justify-content: center;
+  min-height: 44px;
+}
+
+.login-work-note {
+  font-size: 11px;
+  color: var(--gray);
+  letter-spacing: 1px;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+.login-error {
+  font-size: 13px;
+  color: #ff5555;
+  margin-top: 8px;
+  min-height: 18px;
+  letter-spacing: 0.5px;
+}
+
+/* ===== NAV USER ===== */
+.nav__user {
+  display: none;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav__user.visible { display: flex; }
+
+.nav__avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid var(--orange);
+  object-fit: cover;
+}
+
+.nav__name {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--white);
+  max-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav__signout {
+  background: transparent;
+  border: 1px solid rgba(255,71,19,0.5);
+  color: var(--orange);
+  font-family: var(--font);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.nav__signout:hover { background: rgba(255,71,19,0.15); }
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .nav { padding: 16px 20px; }
