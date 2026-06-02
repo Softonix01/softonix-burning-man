@@ -18,6 +18,7 @@ function showApp(user) {
   const overlay = document.getElementById('loginOverlay');
   overlay.classList.add('hidden');
   setTimeout(() => { overlay.style.display = 'none'; }, 500);
+  document.body.classList.remove('login-open');
 
   const navUser = document.getElementById('navUser');
   navUser.classList.add('visible');
@@ -33,6 +34,7 @@ function showLogin() {
   overlay.style.display = 'flex';
   overlay.classList.remove('hidden');
   document.getElementById('navUser').classList.remove('visible');
+  document.body.classList.add('login-open');
   renderGoogleButton();
 }
 
@@ -236,11 +238,11 @@ let emptyIndex = TOTAL - 1;
 
 function initPuzzle() {
   moveCount = 0;
-  timeLeft = 300;
+  timeLeft = 180;
   puzzleStarted = false;
   puzzleDisabled = false;
   document.getElementById('moveCount').textContent = '0';
-  document.getElementById('timerDisplay').textContent = '5:00';
+  document.getElementById('timerDisplay').textContent = '3:00';
   clearInterval(timerInterval);
 
   tiles = Array.from({ length: TOTAL }, (_, i) => i);
@@ -365,24 +367,25 @@ function isSolved() {
 function showPrize() {
   localStorage.setItem('bm_puzzle_done', '1');
   const hash = Math.random().toString(36).substring(2, 7).toUpperCase();
-  document.getElementById('prizeHash').textContent = hash;
-  const elapsed = 300 - timeLeft;
+  document.getElementById('winPrizeHash').textContent = hash;
+  const elapsed = 180 - timeLeft;
   const m = Math.floor(elapsed / 60);
   const s = elapsed % 60;
-  document.getElementById('modalStats').textContent =
+  document.getElementById('winBannerStats').textContent =
     `${moveCount} ходів · ${m}:${String(s).padStart(2, '0')} часу`;
 
-  document.getElementById('prizeModal').classList.add('active');
-  document.getElementById('modalOverlay').classList.add('active');
+  document.getElementById('winBanner').classList.add('active');
+  document.getElementById('winBannerOverlay').classList.add('active');
 
   const results = JSON.parse(localStorage.getItem('bm_puzzle_results') || '[]');
   results.push({ hash, moves: moveCount, time: elapsed, date: new Date().toISOString() });
   localStorage.setItem('bm_puzzle_results', JSON.stringify(results));
 }
 
-function closeModal() {
-  document.getElementById('prizeModal').classList.remove('active');
-  document.getElementById('modalOverlay').classList.remove('active');
+function closeWinBanner() {
+  document.getElementById('winBanner').classList.remove('active');
+  document.getElementById('winBannerOverlay').classList.remove('active');
+  showPuzzleCompleted();
 }
 
 function showTimeWasted() {
@@ -401,8 +404,11 @@ function closeTimeWasted() {
   showPuzzleCompleted();
 }
 
-// Init puzzle on load
+// Init puzzle on load — lock to one game per user
 initPuzzle();
+if (localStorage.getItem('bm_puzzle_done') || localStorage.getItem('bm_puzzle_lost')) {
+  showPuzzleCompleted();
+}
 
 // ===== DONATE =====
 const MONOBANK_URL = 'https://send.monobank.ua/jar/9t9GM4YDfK';

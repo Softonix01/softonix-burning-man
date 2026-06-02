@@ -12,7 +12,10 @@
   --font: 'Montserrat', Verdana, Geneva, sans-serif;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
 
 body {
   background: var(--black);
@@ -20,6 +23,10 @@ body {
   font-family: var(--font);
   overflow-x: hidden;
   line-height: 1.6;
+}
+
+body.login-open {
+  overflow: hidden;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -1039,17 +1046,105 @@ a { color: inherit; text-decoration: none; }
 
 .nav__signout:hover { background: rgba(255,71,19,0.15); }
 
+/* ===== WIN BANNER ===== */
+.win-banner {
+  max-width: 460px;
+  overflow: visible;
+  padding-bottom: 56px;
+}
+
+.win-banner__fires {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 4px;
+  pointer-events: none;
+}
+
+.win-banner__emoji {
+  font-size: 36px;
+  margin-bottom: 8px;
+  animation: flicker 1s infinite alternate;
+}
+
+.win-banner__label {
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: var(--gray);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.win-banner__title {
+  font-size: clamp(44px, 12vw, 76px);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  margin-bottom: 24px;
+  animation: firePulse 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes firePulse {
+  from { text-shadow: 0 0 20px rgba(255,71,19,0.4); }
+  to   { text-shadow: 0 0 50px rgba(255,71,19,1), 0 0 100px rgba(255,71,19,0.4); }
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .nav { padding: 16px 20px; }
   .nav__links { display: none; }
+  .nav__name { max-width: 110px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .stripe { display: none; }
   .puzzle-wrapper { grid-template-columns: 1fr; }
-  .puzzle-info { flex-direction: row; width: 100%; justify-content: space-around; }
-  .puzzle-preview { display: none; }
+  /* stats in a row, button wraps to its own full-width row below */
+  .puzzle-info { flex-direction: row; flex-wrap: wrap; width: 100%; justify-content: space-around; }
+  .puzzle-info .btn--outline { width: 100%; margin-top: 4px; }
+  .puzzle-preview { margin-top: 16px; }
+  .puzzle-preview__img { width: 96px; margin: 0 auto; }
   .email-form__row { flex-direction: column; }
   .footer__top { flex-direction: column; }
   .footer__bottom { flex-direction: column; text-align: center; }
   .countdown { gap: 6px; }
   .countdown__num { min-width: 60px; font-size: 28px; padding: 8px 12px; }
+}
+
+@media (max-width: 390px) {
+  .container { padding: 0 14px; }
+  .section { padding: 72px 0; }
+
+  .hero__content { padding: 100px 14px 60px; }
+  .hero__title { font-size: 44px; letter-spacing: -1px; }
+  .hero__sub { font-size: 10px; letter-spacing: 4px; }
+  .hero__desc { font-size: 13px; letter-spacing: 2px; }
+  .hero__location { font-size: 12px; }
+
+  .countdown { gap: 3px; }
+  .countdown__item { min-width: 0; }
+  .countdown__num { min-width: 54px; font-size: 22px; padding: 6px 8px; }
+  .countdown__sep { font-size: 24px; }
+
+  /* hide name on very small screens, keep avatar + logout visible */
+  .nav__name { display: none; }
+  .nav__signout { font-size: 9px; padding: 5px 8px; letter-spacing: 1px; }
+  .nav__avatar { width: 26px; height: 26px; }
+  .nav { padding: 14px 16px; }
+
+  .btn { padding: 13px 22px; font-size: 12px; letter-spacing: 2px; }
+
+  .login-box { padding: 32px 18px; }
+  .login-title { font-size: 40px; }
+  .login-hint { letter-spacing: 1px; }
+
+  .puzzle-info { gap: 10px; padding: 16px; }
+  .puzzle-stat__val { font-size: 22px; }
+
+  .section__title { font-size: 28px; }
+  .section__desc { font-size: 14px; }
+
+  .about__grid { grid-template-columns: 1fr; }
+
+  .footer__links { gap: 14px; }
+  .nav { padding: 14px 16px; }
 }

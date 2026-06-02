@@ -179,19 +179,24 @@
     </div>
   </section>
 
-  <!-- PRIZE MODAL -->
-  <div class="modal" id="prizeModal">
-    <div class="modal__box">
-      <div class="modal__fire">🔥</div>
-      <h2>Вітаємо!</h2>
-      <p>Ти розгадав головоломку!</p>
-      <div class="prize-code" id="prizeCode">BURN-<span id="prizeHash"></span></div>
-      <p class="modal__note">Покажи цей код організатору на фестивалі і отримай свій приз 🎁</p>
-      <div class="modal__stats" id="modalStats"></div>
-      <button class="btn btn--primary" onclick="closeModal()">Закрити</button>
+  <!-- WIN BANNER -->
+  <div class="modal win-banner" id="winBanner">
+    <div class="win-banner__fires">
+      <div class="flame" style="width:28px;height:85px;"></div>
+      <div class="flame flame--2" style="width:46px;height:140px;animation-delay:.15s;"></div>
+      <div class="flame flame--3" style="width:22px;height:70px;animation-delay:.4s;"></div>
+      <div class="flame" style="width:36px;height:105px;animation-delay:.05s;animation-duration:1.1s;"></div>
+      <div class="flame flame--3" style="width:18px;height:65px;animation-delay:.55s;animation-duration:.9s;"></div>
     </div>
+    <p class="win-banner__emoji">🔥🏆🔥</p>
+    <p class="win-banner__label">Вітаємо!</p>
+    <h2 class="win-banner__title">НЕ<span class="accent">СЕТЬСЯ</span></h2>
+    <div class="prize-code">BURN-<span id="winPrizeHash"></span></div>
+    <p class="modal__note">Покажи цей код організатору на фестивалі і отримай свій приз 🎁</p>
+    <div class="modal__stats" id="winBannerStats"></div>
+    <button class="btn btn--primary" onclick="closeWinBanner()">Закрити</button>
   </div>
-  <div class="modal__overlay" id="modalOverlay" onclick="closeModal()"></div>
+  <div class="modal__overlay" id="winBannerOverlay" onclick="closeWinBanner()"></div>
 
   <!-- TIME WASTED MODAL -->
   <div class="modal" id="timeWastedModal">
