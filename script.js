@@ -167,59 +167,6 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-// ===== GALLERY / UPLOAD =====
-const uploadZone = document.getElementById('uploadZone');
-const fileInput = document.getElementById('fileInput');
-const galleryGrid = document.getElementById('galleryGrid');
-
-uploadZone.addEventListener('dragover', (e) => {
-  e.preventDefault();
-  uploadZone.classList.add('dragover');
-});
-
-uploadZone.addEventListener('dragleave', () => {
-  uploadZone.classList.remove('dragover');
-});
-
-uploadZone.addEventListener('drop', (e) => {
-  e.preventDefault();
-  uploadZone.classList.remove('dragover');
-  handleFiles(e.dataTransfer.files);
-});
-
-fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
-
-function handleFiles(files) {
-  Array.from(files).forEach(file => {
-    if (!file.type.startsWith('image/') && !file.type.startsWith('video/')) return;
-    if (file.size > 50 * 1024 * 1024) {
-      alert(`Файл "${file.name}" занадто великий (макс. 50MB)`);
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const item = document.createElement('div');
-      item.className = 'gallery__item';
-
-      if (file.type.startsWith('image/')) {
-        const img = document.createElement('img');
-        img.src = e.target.result;
-        img.alt = file.name;
-        item.appendChild(img);
-      } else {
-        const video = document.createElement('video');
-        video.src = e.target.result;
-        video.controls = true;
-        video.muted = true;
-        item.appendChild(video);
-      }
-
-      galleryGrid.insertBefore(item, galleryGrid.firstChild);
-    };
-    reader.readAsDataURL(file);
-  });
-}
 
 // ===== PUZZLE GAME =====
 const GRID = 4;
@@ -420,6 +367,7 @@ function selectAmount(btn, amount) {
   btn.classList.add('selected');
   document.getElementById('donateLinkBtn').href = MONOBANK_URL + '?amount=' + amount;
 }
+
 
 // ===== NAV SCROLL EFFECT =====
 window.addEventListener('scroll', () => {

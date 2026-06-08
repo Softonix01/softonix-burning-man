@@ -129,23 +129,29 @@
     </div>
   </section>
 
-  <!-- GALLERY / UPLOAD -->
+  <!-- GALLERY -->
   <section class="section gallery" id="gallery">
     <div class="container">
       <span class="section__tag">Галерея</span>
-      <h2 class="section__title">Поділись<br/><span class="accent">моментом</span></h2>
-      <p class="section__desc">Завантажуй фото та відео — разом ми створюємо хроніку події</p>
+      <h2 class="section__title">Фото <span class="accent">події</span></h2>
+      <p class="section__desc">Знімай моменти та ділись з командою — всі фото в одному спільному альбомі</p>
 
-      <div class="upload-zone" id="uploadZone">
-        <input type="file" id="fileInput" accept="image/*,video/*" multiple hidden />
-        <div class="upload-zone__inner" id="uploadInner">
-          <div class="upload-zone__icon">📸</div>
-          <p>Перетягни файли сюди або <button class="upload-btn" type="button" onclick="document.getElementById('fileInput').click()">вибери з пристрою</button></p>
-          <p class="upload-zone__hint">Підтримуються фото та відео (макс. 50MB)</p>
+      <div class="gallery__hero">
+        <div class="gallery__hero__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36">
+            <path fill="#4285F4" d="M12 12H2.1A9.9 9.9 0 0112 2.1V12z"/>
+            <path fill="#EA4335" d="M12 12V2.1A9.9 9.9 0 0121.9 12H12z"/>
+            <path fill="#FBBC05" d="M12 12h9.9A9.9 9.9 0 0112 21.9V12z"/>
+            <path fill="#34A853" d="M12 12v9.9A9.9 9.9 0 012.1 12H12z"/>
+          </svg>
         </div>
+        <p class="gallery__hero__label">Google Фото · Спільний альбом</p>
+        <h3 class="gallery__hero__title">Burning Man<br/><span class="accent">Softonix Edition</span></h3>
+        <p class="gallery__hero__desc">Переглядай фото від усієї команди та додавай свої знімки прямо в альбом</p>
+        <a class="btn btn--primary" href="https://photos.app.goo.gl/dCagMCuZSmcz4Xn18" target="_blank" rel="noopener noreferrer">
+          Відкрити альбом
+        </a>
       </div>
-
-      <div class="gallery__grid" id="galleryGrid"></div>
     </div>
   </section>
 
