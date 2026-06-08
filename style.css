@@ -1073,12 +1073,35 @@ a { color: inherit; text-decoration: none; }
   text-transform: uppercase;
   letter-spacing: -1px;
   margin-bottom: 24px;
-  animation: firePulse 1.2s ease-in-out infinite alternate;
+  background: linear-gradient(to top, #c0392b 0%, #ff4713 22%, #ff8c00 50%, #ffd000 75%, #fff5c0 100%);
+  background-size: 100% 250%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fireFlicker 0.85s ease-in-out infinite alternate;
 }
 
-@keyframes firePulse {
-  from { text-shadow: 0 0 20px rgba(255,71,19,0.4); }
-  to   { text-shadow: 0 0 50px rgba(255,71,19,1), 0 0 100px rgba(255,71,19,0.4); }
+.win-banner__title .accent {
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes fireFlicker {
+  0% {
+    background-position: 0% 100%;
+    filter: drop-shadow(0 0 4px #ff4713) drop-shadow(0 0 12px rgba(255,100,0,0.9));
+  }
+  25% {
+    background-position: 0% 82%;
+    filter: drop-shadow(0 0 10px #ff6a00) drop-shadow(0 0 24px rgba(255,71,19,1)) drop-shadow(0 0 48px rgba(255,120,0,0.5));
+  }
+  60% {
+    background-position: 0% 70%;
+    filter: drop-shadow(0 0 6px #ffb300) drop-shadow(0 0 16px rgba(255,150,0,1)) drop-shadow(0 0 36px rgba(255,71,19,0.6));
+  }
+  100% {
+    background-position: 0% 58%;
+    filter: drop-shadow(0 0 12px #ff4713) drop-shadow(0 0 28px rgba(255,71,19,1)) drop-shadow(0 0 56px rgba(255,150,0,0.4));
+  }
 }
 
 /* ===== RESPONSIVE ===== */
