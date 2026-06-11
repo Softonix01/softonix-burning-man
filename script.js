@@ -398,9 +398,10 @@ document.querySelectorAll('.about__card, .donate__card').forEach(el => {
 
 // ===== TEAMS EXPAND =====
 function toggleTeam(btn) {
-  const card = btn.closest('.team-card');
+  const card = btn.parentElement.closest('.team-card');
   const extras = card.querySelectorAll('.team-member--extra');
-  const expanded = extras[0].classList.contains('visible');
-  extras.forEach(li => li.classList.toggle('visible', !expanded));
-  btn.textContent = expanded ? 'Більше' : 'Менше';
+  const isExpanded = btn.getAttribute('data-expanded') === '1';
+  extras.forEach(li => { li.style.display = isExpanded ? 'none' : 'block'; });
+  btn.setAttribute('data-expanded', isExpanded ? '0' : '1');
+  btn.textContent = isExpanded ? 'Більше' : 'Менше';
 }

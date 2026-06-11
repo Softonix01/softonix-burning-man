@@ -543,7 +543,6 @@ a { color: inherit; text-decoration: none; }
   padding: 28px 20px;
   transition: all 0.3s;
   position: relative;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
@@ -598,10 +597,6 @@ a { color: inherit; text-decoration: none; }
 
 .team-member--extra {
   display: none;
-}
-
-.team-member--extra.visible {
-  display: list-item;
 }
 
 .team-card__more {
