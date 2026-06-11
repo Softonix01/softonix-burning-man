@@ -573,8 +573,8 @@ a { color: inherit; text-decoration: none; }
 }
 
 .team-card__icon-img {
-  width: 52px;
-  height: 52px;
+  width: 72px;
+  height: 72px;
   object-fit: contain;
 }
 
