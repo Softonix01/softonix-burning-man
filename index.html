@@ -33,6 +33,7 @@
     <a href="#home" class="nav__logo"><img src="assets/logo_softonix_white.png" alt="Softonix" height="20" /></a>
     <ul class="nav__links">
       <li><a href="#about">Про подію</a></li>
+      <li><a href="#teams">Команди</a></li>
       <li><a href="#gallery">Галерея</a></li>
       <li><a href="#puzzle">Гра</a></li>
       <li><a href="#donate">Донат</a></li>
@@ -129,6 +130,77 @@
     </div>
   </section>
 
+  <!-- TEAMS -->
+  <section class="section teams" id="teams">
+    <div class="container">
+      <span class="section__tag">Учасники</span>
+      <h2 class="section__title">Команди <span class="accent">фестивалю</span></h2>
+      <div class="teams__grid">
+
+        <div class="team-card">
+          <div class="team-card__icon">🐺</div>
+          <h3 class="team-card__name">Сини Сихівських Вовків</h3>
+          <ul class="team-card__members">
+            <li>Костя Ільінський</li>
+            <li>Паша Степанчук</li>
+            <li>Василь Куртяник</li>
+            <li class="team-member--extra">Віктор Романюк</li>
+            <li class="team-member--extra">Влад Копач</li>
+            <li class="team-member--extra">Андрій Малиновський</li>
+            <li class="team-member--extra">Данило Шаповалов</li>
+          </ul>
+          <button class="team-card__more" onclick="toggleTeam(this)">Більше</button>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card__icon">🏹</div>
+          <h3 class="team-card__name">Братство Голландського Штурвала</h3>
+          <ul class="team-card__members">
+            <li>Олег Герасимчук</li>
+            <li>Макс Лабик</li>
+            <li>Вова Сидорко</li>
+            <li class="team-member--extra">Андрій Василиця</li>
+            <li class="team-member--extra">Сєма</li>
+            <li class="team-member--extra">Денчик Поляруш</li>
+            <li class="team-member--extra">Ромчик Гоголь</li>
+          </ul>
+          <button class="team-card__more" onclick="toggleTeam(this)">Більше</button>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card__icon">🦁</div>
+          <h3 class="team-card__name">Прайд Евередж-Сайзд Левів</h3>
+          <ul class="team-card__members">
+            <li>Максим Нікітченко</li>
+            <li>Петя Козяк</li>
+            <li>Олег Фостяк</li>
+            <li class="team-member--extra">Антон Чижик</li>
+            <li class="team-member--extra">Олег Бидльовський</li>
+            <li class="team-member--extra">Ромчик Попович</li>
+            <li class="team-member--extra">Андрій Хробак</li>
+          </ul>
+          <button class="team-card__more" onclick="toggleTeam(this)">Більше</button>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card__icon">🦅</div>
+          <h3 class="team-card__name">Яструби Вільного Хапання</h3>
+          <ul class="team-card__members">
+            <li>Давид Качор</li>
+            <li>Андрій Янчук</li>
+            <li>Нікіта Давидов</li>
+            <li class="team-member--extra">Павло Гаджега</li>
+            <li class="team-member--extra">Денис Ковалко</li>
+            <li class="team-member--extra">Володимир Комар</li>
+            <li class="team-member--extra">Максим Вадяк</li>
+          </ul>
+          <button class="team-card__more" onclick="toggleTeam(this)">Більше</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- GALLERY -->
   <section class="section gallery" id="gallery">
     <div class="container">
@@ -220,7 +292,7 @@
     <div class="container">
       <span class="section__tag">Підтримай подію</span>
       <h2 class="section__title">Зроби фестиваль<br/><span class="accent">яскравішим</span></h2>
-      <p class="section__desc">Кожна гривня йде на декорації, арт-інсталяції та неймовірну атмосферу</p>
+      <p class="section__desc">Кожна гривня допомагає нищити ворога</p>
       <div class="donate__card">
         <div class="donate__amounts">
           <button class="donate__btn" onclick="selectAmount(this, 100)">100 ₴</button>
@@ -246,6 +318,7 @@
         </div>
         <div class="footer__links">
           <a href="#about">Про подію</a>
+          <a href="#teams">Команди</a>
           <a href="#gallery">Галерея</a>
           <a href="#puzzle">Гра</a>
           <a href="#donate">Донат</a>
